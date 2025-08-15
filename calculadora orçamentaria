@@ -1,0 +1,85 @@
+class OrcamentoPessoal:
+    def __init__(self):
+        self.receitas = []
+        self.despesas = []
+
+    def adicionar_receita(self, valor, descricao):
+        self.receitas.append({'valor': valor, 'descricao': descricao})
+
+    def adicionar_despesa(self, valor, descricao):
+        """
+    Adiciona uma despesa à lista de despesas.
+    Args:
+        valor (float): O valor da despesa.
+        descricao (str): Uma descrição da despesa.
+    Returns:
+        None
+    """
+        self.despesas.append({'valor': valor, 'descricao': descricao})
+
+    def total_receitas(self):
+        """
+    Calcula a soma total de todos os valores de receitas.
+    Retorna:
+        float: A soma do campo 'valor' de cada item na lista 'receitas'.
+    """
+        return sum(r['valor'] for r in self.receitas)
+
+    def total_despesas(self):
+        return sum(d['valor'] for d in self.despesas)
+
+    def saldo(self):
+        return self.total_receitas() - self.total_despesas()
+
+    def mostrar_resumo(self):
+        """
+    Exibe um resumo orçamentário no console, incluindo o total de receitas,
+    total de despesas e o saldo atual.
+    Este método imprime os valores formatados em reais (R$) com duas casas decimais.
+    """
+        print("\n--- Resumo Orçamentário ---")
+        print(f"Total de receitas: R$ {self.total_receitas():.2f}")
+        print(f"Total de despesas: R$ {self.total_despesas():.2f}")
+        print(f"Saldo: R$ {self.saldo():.2f}")
+
+def main():
+    """
+Função principal para a calculadora orçamentária pessoal (CLI).
+Fornece uma interface de menu para o usuário:
+1. Adicionar receitas.
+2. Adicionar despesas.
+3. Exibir um resumo do orçamento.
+4. Sair da aplicação.
+Solicita entradas do usuário e interage com uma instância de OrcamentoPessoal
+para gerenciar e exibir os dados do orçamento.
+"""
+    orcamento = OrcamentoPessoal()
+    while True:
+        print("\n1. Adicionar receita")
+        print("2. Adicionar despesa")
+        print("3. Mostrar resumo")
+        print("4. Sair")
+        opcao = input("Escolha uma opção: ")
+        if opcao == '1':
+            valor = float(input("Digite o valor da receita: R$ "))
+            descricao = input("Descrição da receita: ")
+            orcamento.adicionar_receita(valor, descricao)
+        elif opcao == '2':
+            valor = float(input("Digite o valor da despesa: R$ "))
+            descricao = input("Descrição da despesa: ")
+            orcamento.adicionar_despesa(valor, descricao)
+        elif opcao == '3':
+            orcamento.mostrar_resumo()
+        elif opcao == '4':
+            print("Saindo...")
+            break
+        else:
+            print("Opção inválida.")
+
+if __name__ == "__main__":
+   def main(mostrar_resumo=False):
+    if mostrar_resumo:
+        print("Resumo será exibido.")
+    else:
+        print("Resumo não será exibido.")
+
