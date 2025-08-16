@@ -66,7 +66,7 @@ para gerenciar e exibir os dados do orçamento.
             orcamento.adicionar_receita(valor, descricao)
         elif opcao == '2':
             valor = float(input("Digite o valor da despesa: R$ "))
-            descricao = input("Descrição da despesa: ")
+            descricao = input("Descrição das despesas: ")
             orcamento.adicionar_despesa(valor, descricao)
         elif opcao == '3':
             orcamento.mostrar_resumo()
